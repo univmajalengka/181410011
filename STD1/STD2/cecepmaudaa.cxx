@@ -1,13 +1,37 @@
-#include<iostream>
+#include <iostream>
+#include <string>
+#include <sstream>
 using namespace std;
-char rukunislam [5] [10] =
-{"sahadat","sholat","zakat","puasa","naik haji"};
-int n;
-int main()
+
+struct freefire_t {
+  string title;
+  int year;
+} freefire [3];
+
+void printfreefire (freefire_t freefire);
+
+int main ()
 {
-	cout<<"masukan urutan rukun islam dari nol sampe empat: ";
-	cin>>n;
-	cout<<"Nama rukun islam tersebut adalah :";
-	cout<< " " <<rukunislam[n];
-	return 0;
+  string mystr;
+  int n;
+
+  for (n=0; n<3; n++)
+  {
+    cout << "Enter title: ";
+    getline (cin,freefire[n].title);
+    cout << "Enter year: ";
+    getline (cin,mystr);
+    stringstream(mystr) >> freefire[n].year;
+  }
+
+  cout << "\n anda memasukan data freefire:\n";
+  for (n=0; n<3; n++)
+    printfreefire (freefire[n]);
+  return 0;
+}
+
+void printfreefire (freefire_t freefire)
+{
+  cout << freefire.title;
+  cout << " (" << freefire.year << ")\n";
 }
